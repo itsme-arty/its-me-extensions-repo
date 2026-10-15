@@ -8,8 +8,10 @@ sys.path.insert(0, str(Path(__file__).parent / "kei-scripts"))
 import index_pb2  # noqa: E402
 from google.protobuf import json_format  # noqa: E402
 
-# Usage: make-repo.py <base_url> <out_dir> <signing_cert_sha256>
+# Usage: make-repo.py <base_url> <out_dir> <signing_cert_sha256> [name] [badge]
 base_url, out_dir, signing_key = sys.argv[1].rstrip("/"), Path(sys.argv[2]), sys.argv[3]
+repo_name = sys.argv[4] if len(sys.argv) > 4 else "It's Me"
+badge = sys.argv[5] if len(sys.argv) > 5 else "ME"
 build = Path(__file__).parent / "ext/src/all/kagane/build"
 info = json.loads((build / "keiyoushi-source-info.json").read_text())
 apk = next((build / "outputs/apk/release").glob("*.apk"))
@@ -49,8 +51,8 @@ ext = index_pb2.Extension(
 )
 
 index = index_pb2.Index(
-    name="Jo Private",
-    badgeLabel="JO",
+    name=repo_name,
+    badgeLabel=badge,
     signingKey=signing_key,
     contact=index_pb2.Contact(website=base_url),
     extensionList=index_pb2.ExtensionList(extensions=[ext]),
