@@ -7,3 +7,4 @@ Done (2026-10-15):
 Not verified: live API (Cloudflare blocks build env); in-app test is up to user.
 Backlog: personal extension repo (user paused it), upstream PR.
 - 2026-10-15: Play Protect "harmful" warning fixed: re-signed with personal release key (CN=Jo Private Extensions), keystore + passwords in /root/kagane-signing (keep for future updates). Build: set -a; . /root/kagane-signing/signing.env; /root/build.sh :src:all:kagane:assembleRelease -x :src:all:kagane:optimizeReleaseResources --no-configuration-cache (run aapt2 optimize manually first if resources change).
+- 2026-10-15: Private Mihon repo "Jo Private" (keiyoushi index.pb format) at <preview>/repo/index.pb, files in /app/frontend/public/repo, generator: /root/repo-venv/bin/python /app/kagane-fix/make-repo.py <base_url> <out_dir> <cert_sha256>. Next: move to user's GitHub for permanent hosting.
