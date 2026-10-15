@@ -1,0 +1,39 @@
+{
+  "summary": "Verified Kagane patched APK v1.6.33 served from static /kagane/ path. All 5 backend assertions in the review request pass: HTTP download, SHA256 match, non-debug signing cert (CN=Jo Private Extensions), APK structure parity with official 1.6.32 (only versionCode/Name differ), presence of new 'books/index' endpoint string in classes.dex, and source diff correctness in Kagane.kt / Dto.kt.",
+  "test_results": {
+    "1_download_sha256": {
+      "status": "PASS",
+      "details": "HTTP 200, content-type application/vnd.android.package-archive, sha256=c4f2c1293089c1a6e750ab5e2bc981452633db90bf247cce5e44f059eac20a8c (matches /app/frontend/public/kagane/tachiyomi-all.kagane-v1.6.33.apk)"
+    },
+    "2_signing_cert": {
+      "status": "PASS",
+      "details": "apksigner verify: Verifies=true, v2 scheme=true. V2 Signer DN = 'CN=Jo Private Extensions, O=Jo Private' (NOT 'CN=Android Debug'). SHA-256 digest=e2b9220aba679d713db81ac3356abef5c3f5f480d837e387b2d578977bfe66b6, RSA 4096. v1 JAR scheme false (same as official keiyoushi which uses v2 only)."
+    },
+    "3_apk_structure_vs_1_6_32": {
+      "status": "PASS",
+      "details": "Both contain AndroidManifest.xml, classes.dex, res/, resources.arsc, META-INF. aapt2 badging: package='eu.kanade.tachiyomi.extension.all.kagane' identical; versionCode 106032->106033, versionName 1.6.32->1.6.33 — only expected differences. minSdk=26, targetSdk=37, label 'Tachiyomi: Kagane' identical."
+    },
+    "4_books_index_in_dex": {
+      "status": "PASS",
+      "details": "strings classes.dex of 1.6.33 contains '/books/index?fields=List' (1 occurrence). 1.6.32 dex has 0 occurrences — confirms new chapter endpoint is embedded."
+    },
+    "5_source_diff_sanity": {
+      "status": "PASS",
+      "details": "Kagane.kt fetchMangaUpdate: when fetchChapters=false, returns existing `chapters` (else branch). When fetchDetails=false, returns `manga` unchanged (else branch). Chapters fetched via `$apiUrl/series/$seriesId/books/index?fields=List`, parsed via `.parseAs<BookIndexDto>().toBooks()`. BookIndexDto defined in Dto.kt with toBooks() that zips fields+row and constructs ChapterDto.Book list. versionCode bumped 32->33 in build.gradle.kts."
+    }
+  },
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": ["/app/test_reports/iteration_1.json"],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Signing: APK is now signed with personal release key (CN=Jo Private Extensions) using v2-only scheme, matching upstream keiyoushi's signing scheme. This should resolve Google Play Protect 'harmful' warning that was caused by the generic Android Debug cert.",
+    "Note: v1 (JAR) scheme is false; only v2 is used. This matches upstream so is intentional — but if any downstream Mihon version requires v1, re-sign with --v1-signing-enabled. Current state matches official 1.6.32 APK scheme."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100%", "frontend": "N/A (not applicable - static APK)"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "This is a static APK hosted at /app/frontend/public/kagane/. No UI/API to test. Live Kagane API (kagane.org) is behind Cloudflare and unreachable from env — functional chapter-fetching can only be verified by installing the APK on a device. All build/signing/source assertions pass."
+}

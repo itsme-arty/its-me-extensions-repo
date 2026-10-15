@@ -6,3 +6,4 @@ Done (2026-10-15):
 - Built v1.6.33 APK/JAR (ARM64 host; aapt2 optimize step run manually). Served at /kagane/ on preview URL. Source at /app/kagane-fix/ext, diff at /app/kagane-fix/kagane-chapter-fix.diff
 Not verified: live API (Cloudflare blocks build env); in-app test is up to user.
 Backlog: personal extension repo (user paused it), upstream PR.
+- 2026-10-15: Play Protect "harmful" warning fixed: re-signed with personal release key (CN=Jo Private Extensions), keystore + passwords in /root/kagane-signing (keep for future updates). Build: set -a; . /root/kagane-signing/signing.env; /root/build.sh :src:all:kagane:assembleRelease -x :src:all:kagane:optimizeReleaseResources --no-configuration-cache (run aapt2 optimize manually first if resources change).
