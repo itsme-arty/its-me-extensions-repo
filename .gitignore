@@ -15,3 +15,10 @@ test_reports/
 test_result.md
 plan/
 .ruff_cache/
+.env
+.env.*
+*.env
+credentials.json
+*.pem
+*.key
+.credentials
