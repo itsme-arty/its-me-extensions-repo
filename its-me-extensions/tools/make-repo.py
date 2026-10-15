@@ -21,19 +21,18 @@ icon = Path(__file__).parent.parent / "kagane/res/mipmap-xhdpi/ic_launcher.png"
 
 if out_dir.exists():
     shutil.rmtree(out_dir)
-(out_dir / "apk").mkdir(parents=True)
-(out_dir / "icon").mkdir()
-shutil.copy(apk, out_dir / "apk" / apk.name)
-shutil.copy(jar, out_dir / "apk" / jar.name)
-shutil.copy(icon, out_dir / "icon" / f"{info['packageName']}.png")
+out_dir.mkdir(parents=True)
+shutil.copy(apk, out_dir / apk.name)
+shutil.copy(jar, out_dir / jar.name)
+shutil.copy(icon, out_dir / f"{info['packageName']}.png")
 
 ext = index_pb2.Extension(
     name=info["name"],
     packageName=info["packageName"],
     resources=index_pb2.Resources(
-        apkUrl=f"{base_url}/apk/{apk.name}",
-        iconUrl=f"{base_url}/icon/{info['packageName']}.png",
-        jarUrl=f"{base_url}/apk/{jar.name}",
+        apkUrl=f"{base_url}/{apk.name}",
+        iconUrl=f"{base_url}/{info['packageName']}.png",
+        jarUrl=f"{base_url}/{jar.name}",
     ),
     extensionLib=info["extensionLib"],
     versionCode=info["versionCode"],

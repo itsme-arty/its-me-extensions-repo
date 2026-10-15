@@ -3,7 +3,7 @@
   "badgeLabel": "ME",
   "signingKey": "054d463eda004cdb0644d69a9c35e2a7696c1ab524353f8e083ad80c1b7c68ad",
   "contact": {
-    "website": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/its-me-extensions-repo/main"
+    "website": "https://raw.githubusercontent.com/itsme-arty/its-me/main"
   },
   "extensionList": {
     "extensions": [
@@ -11,9 +11,9 @@
         "name": "Kagane",
         "packageName": "eu.kanade.tachiyomi.extension.all.kagane",
         "resources": {
-          "apkUrl": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/its-me-extensions-repo/main/apk/tachiyomi-all.kagane-v1.6.33.apk",
-          "iconUrl": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/its-me-extensions-repo/main/icon/eu.kanade.tachiyomi.extension.all.kagane.png",
-          "jarUrl": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/its-me-extensions-repo/main/apk/tachiyomi-all.kagane-v1.6.33.jar"
+          "apkUrl": "https://raw.githubusercontent.com/itsme-arty/its-me/main/tachiyomi-all.kagane-v1.6.33.apk",
+          "iconUrl": "https://raw.githubusercontent.com/itsme-arty/its-me/main/eu.kanade.tachiyomi.extension.all.kagane.png",
+          "jarUrl": "https://raw.githubusercontent.com/itsme-arty/its-me/main/tachiyomi-all.kagane-v1.6.33.jar"
         },
         "extensionLib": "1.6",
         "versionCode": "106033",

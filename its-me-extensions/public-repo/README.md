@@ -1,7 +1,7 @@
-# It's Me — Mihon extensions
+# It's Me
 
-Add this repo in Mihon: Settings → Browse → Extension repos → Add
+Add in Mihon: Settings → Browse → Extension repos → Add
 
 ```
-https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/its-me-extensions-repo/main/index.pb
+https://raw.githubusercontent.com/itsme-arty/its-me/main/index.pb
 ```

@@ -23,8 +23,8 @@ A details-only refresh keeps the existing chapter list.
 5. `./gradlew :src:all:kagane:assembleRelease`
 6. Bump `versionCode` in `kagane/build.gradle.kts` for every new release
 7. Generate the repo files:
-   `KAGANE_BUILD=<extensions-source>/src/all/kagane/build python tools/make-repo.py https://raw.githubusercontent.com/<USER>/its-me-extensions-repo/main public-repo 054d463eda004cdb0644d69a9c35e2a7696c1ab524353f8e083ad80c1b7c68ad`
+   `KAGANE_BUILD=<extensions-source>/src/all/kagane/build python tools/make-repo.py https://raw.githubusercontent.com/<USER>/its-me/main public-repo 054d463eda004cdb0644d69a9c35e2a7696c1ab524353f8e083ad80c1b7c68ad`
    (needs `pip install "protobuf>=7.35.1"`)
-8. Upload the contents of `public-repo/` to the public repo
+8. Upload the files in `public-repo/` to the public repo `its-me`
 
 Signing certificate SHA-256: `054d463eda004cdb0644d69a9c35e2a7696c1ab524353f8e083ad80c1b7c68ad`
